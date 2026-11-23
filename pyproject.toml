@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+package = true
+
+[project]
+name = "readmify"
+version = "0.1.0"
+description = "An AI-powered codebase understanding and documentation assistant that analyzes repositories, summarizes source files, manages context efficiently, and generates professional README documentation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "GNU AFFERO GENERAL PUBLIC LICENSE"}
+authors = [
+  {name = "Magesh"}
+]
+
+dependencies = [
+    "click",
+    "pathspec>=1.0.3",
+    "pyyaml",
+    "rich",
+    "python-dotenv",
+    "groq>=1.1.1"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.2",
+    "twine>=6.2.0",
+]
+
+[project.urls]
+Repository = "https://github.com/Mageshk100/Readmify"
+Issues = "https://github.com/Mageshk100/Readmify/issues"
+
+[project.scripts]
+readmify = "readmify.pipelines.supervisor:cli"
+
+[tool.setuptools]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["readmify*"]
+
+[tool.setuptools.package-data]
+"readmify" = ["resources/*.gitignore"]
